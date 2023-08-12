@@ -13,4 +13,8 @@ Users can delete a pokemon character from their team as well as search up specif
 able to see a image preview of their team in their inventory, click on them to pull up their information, as well as toggle 
 between shiny and regular view.
 
-![Phase 1 Project Flatiron](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/ebb5cb13-a49e-46b5-95c9-cbc9c3362d53)
+
+
+
+
+![Phase 1 Project Flatiron](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/414bb1a4-c1fc-4043-95e8-afc2f4722b6e)

@@ -8,12 +8,15 @@ Public API: [https://pokeapi.co/](https://pokeapi.co/api/v2/pokemon?limit=151%27
 
 
 
-The users have the ability to scroll through a list of pokemon characters.
+Users Experience: The users have the ability to scroll through a list of pokemon characters.
 Once the user clicks on a specific dex card the characters image and their character information will be displayed.
 Users can build their personal pokemon deck team by adding the character to their team inventory(team limit is set to 6).
 Users can delete a pokemon character from their team as well as search up specific pokemon characters. Users will be 
 able to see a image preview of their team in their inventory, click on them to pull up their information, as well as toggle 
 between shiny and regular view.
+
+MVP: Search through gen 1 pokemon characters, click on characters, and display image of character with it's description.
+Stretch goals: Persit team inventory, add characters to your team, remove a character from your team, and toggle between shiny image version of the character.
 
 
 

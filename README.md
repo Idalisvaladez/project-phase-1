@@ -17,8 +17,6 @@ between shiny and regular view.
 
 
 
-
-
 ![Phase 1 Project Flatiron](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/414bb1a4-c1fc-4043-95e8-afc2f4722b6e)
 
 

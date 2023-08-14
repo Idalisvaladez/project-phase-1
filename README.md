@@ -1,10 +1,12 @@
-# project-phase-1
+# Project-Phase-1
 
-Pokedecs 
+Title: Pokedecs 
 
-Scroll through our pokemon directory and build your team. 
+Description: Scroll through our pokemon directory, view each characters description, and build your team.
 
-API: 
+Public API: [https://pokeapi.co/](https://pokeapi.co/api/v2/pokemon?limit=151%27)
+
+
 
 The users have the ability to scroll through a list of pokemon characters.
 Once the user clicks on a specific dec card the characters image and their character information will be displayed.
@@ -18,3 +20,9 @@ between shiny and regular view.
 
 
 ![Phase 1 Project Flatiron](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/414bb1a4-c1fc-4043-95e8-afc2f4722b6e)
+
+
+
+
+![image](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/55b99fc1-aca2-40d6-b8d2-661e83d39d7c)
+

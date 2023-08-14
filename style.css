@@ -1,0 +1,28 @@
+
+  body {
+    background-color: #e45a5a;
+    border-radius: inherit;
+    border-color: red;
+  }
+  /* Style the inside the navigation bar */
+  .topnav {
+    float: left;
+    position: fixed; left: 300px; top: 100px;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+    
+    /* Style the search box */
+  .topnav input[type=text] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 32px;
+  }
+  

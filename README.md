@@ -19,10 +19,12 @@ between shiny and regular view.
 
 
 
-![wireframe] (https://github.com/Idalisvaladez/project-phase-1/assets/139524475/414bb1a4-c1fc-4043-95e8-afc2f4722b6e)
+![Phase 1 Project Flatiron (1)](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/045fbcba-b04d-4ffa-954e-02440ed8ee34)
 
 
 
 
-![kanban](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/55b99fc1-aca2-40d6-b8d2-661e83d39d7c)
+![IMG_5380](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/0a6b7486-c776-48a6-a4a1-bb2281e8aaae)
+
+
 

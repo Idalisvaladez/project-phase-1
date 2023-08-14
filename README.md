@@ -24,7 +24,7 @@ Stretch goals: Persit team inventory, add characters to your team, remove a char
 
 
 
-![Phase 1 Project Flatiron (1)](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/045fbcba-b04d-4ffa-954e-02440ed8ee34)
+![Phase 1 Project Flatiron](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/414bb1a4-c1fc-4043-95e8-afc2f4722b6e)
 
 
 

@@ -18,13 +18,14 @@ between shiny and regular view.
 MVP: Search through gen 1 pokemon characters, click on characters, and display image of character with it's description.
 
 
-Stretch goals: Persit team inventory, add characters to your team, remove a character from your team, and toggle between shiny image version of the character.
+Stretch goals: Persist team inventory, add characters to your team, remove a character from your team, and toggle between shiny image version of the character.
 
 
 
 
 
-![Phase 1 Project Flatiron (1)](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/045fbcba-b04d-4ffa-954e-02440ed8ee34)
+![Phase 1 Project Flatiron (1)](https://github.com/Idalisvaladez/project-phase-1/assets/139524475/b7837658-34e9-4ec9-a389-14689b1b265d)
+
 
 
 

@@ -4,6 +4,7 @@ const descripUrl = 'https://pokeapi.co/api/v2/pokemon-species/'
 const pokemonUl = document.querySelector('.pokemon-list');
 const search = document.querySelector('form');
 const info = document.querySelector('.info-div')
+const button = document.querySelector('.toggle-button')
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
@@ -29,6 +30,7 @@ function renderPokedex(pokemon) {
         pokemonImg.src = pokemon.sprites.other['official-artwork'].front_default;
         imgDiv.append(pokemonImg);
 
+
         pokemonImg.className = "poke-img"
         let height = document.createElement('p')
         let weight = document.createElement('p')
@@ -40,6 +42,7 @@ function renderPokedex(pokemon) {
         type.textContent = `Type: ${pokemon.types[0].type.name}`
         info.append(name, height, weight, type)
 
+
         fetch(`${descripUrl}${pokemon.id}/`) 
         .then(res => res.json())
         .then(data => {
@@ -49,18 +52,27 @@ function renderPokedex(pokemon) {
             descrip.className = 'description'
             info.append(descrip)
 
+
+            button.addEventListener('click', () => {
+                imgDiv.innerHTML = '';
+                let shinyImg = document.createElement('img');
+                shinyImg.src = pokemon.sprites.other['official-artwork'].front_shiny;
+                shinyImg.className = 'silver-img'
+                imgDiv.append(shinyImg)
+
+            })
+            
+
         })
         })
 
         console.log('clicked', pokemon.name)
-    })
 
 
     pokemonLi.append(pokemonSpanName, pokemonSpanNumber);
     pokemonUl.appendChild(pokemonLi);
 
     
-
 }
 
 
@@ -101,8 +113,12 @@ fetch(pokemonUrl)
 // .then(resp => resp.json())
 // .then(data => console.log(data))
 
-allPokemon.forEach(pokemon => {
-    console.log(pokemon)
-})
 
+
+button.addEventListener('click', () => {
+    imgDiv.innerHTML = '';
+    let shinyImg = document.createElement('img');
+        shinyImg.src = pokemon.sprites.other['official-artwork'].front_shiny;
+        imgDiv.append(shinyImg)
+})
 

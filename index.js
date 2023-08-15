@@ -2,7 +2,12 @@ const pokemonUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 const url = 'https://pokeapi.co/api/v2/pokemon';
 const pokemonUl = document.querySelector('.pokemon-list');
 const search = document.querySelector('form');
+
+let allPokemon;
+let imgDiv = document.querySelector('.img-div')
+
 let allPokemon = [];
+
 
 
 function renderPokedex(pokemon) {
@@ -18,7 +23,13 @@ function renderPokedex(pokemon) {
     pokemonSpanNumber.textContent = `#${pokemon.id}`;
 
     pokemonLi.addEventListener('click', () => {
+        imgDiv.innerHTML = '';
         console.log('clicked', pokemon.name)
+        let pokemonImg = document.createElement('img');
+        pokemonImg.src = pokemon.sprites.other['official-artwork'].front_default;
+        imgDiv.append(pokemonImg);
+
+        pokemonImg.className = "poke-img"
     })
 
     pokemonLi.append(pokemonSpanName, pokemonSpanNumber);
@@ -46,6 +57,7 @@ search.addEventListener('keyup', (e) => {
 
 
 
+
 fetch(pokemonUrl)
 .then(resp => resp.json())
 .then(data => {
@@ -59,6 +71,4 @@ fetch(pokemonUrl)
     });
 
 })
-
-
 

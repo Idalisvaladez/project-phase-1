@@ -3,6 +3,7 @@ const url = 'https://pokeapi.co/api/v2/pokemon';
 const pokemonUl = document.querySelector('.pokemon-list');
 const search = document.querySelector('form');
 let allPokemon;
+let imgDiv = document.querySelector('.img-div')
 
 
 function renderPokedex(pokemon) {
@@ -17,7 +18,13 @@ function renderPokedex(pokemon) {
     pokemonSpanNumber.textContent = `#${pokemon.id}`;
 
     pokemonLi.addEventListener('click', () => {
+        imgDiv.innerHTML = '';
         console.log('clicked', pokemon.name)
+        let pokemonImg = document.createElement('img');
+        pokemonImg.src = pokemon.sprites.other['official-artwork'].front_default;
+        imgDiv.append(pokemonImg);
+
+        pokemonImg.className = "poke-img"
     })
 
     pokemonLi.append(pokemonSpanName, pokemonSpanNumber);
@@ -34,7 +41,7 @@ search.addEventListener('keyup', (e) => {
     console.log(e.key)
 })
 
-// function filteredPokemon(allPokemon, )
+
 
 
 
@@ -54,4 +61,9 @@ fetch(pokemonUrl)
 
 })
 
-
+function displayPokemon (data){
+    let newArt = document.createElement("img")
+    let pokeImg = document.getElementById("img-div")
+    newArt.src = data.sprites.other["official-artwork"].front_default
+    pokeImg.appendChild(newArt)
+}

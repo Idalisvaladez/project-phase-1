@@ -166,6 +166,13 @@
     height: 25vh;
     width: 20vw;
     background-color: #FFC3C3;
+    position: relative;
+}
+.poke-img{
+    position: absolute;
+    height: 230px;
+    width: auto;
+    left:80px;
 }
 
 .info-div {

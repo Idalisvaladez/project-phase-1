@@ -1,9 +1,10 @@
 const pokemonUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 const url = 'https://pokeapi.co/api/v2/pokemon';
+const descripUrl = 'https://pokeapi.co/api/v2/pokemon-species/'
 const pokemonUl = document.querySelector('.pokemon-list');
 const search = document.querySelector('form');
+const info = document.querySelector('.info-div')
 
-let allPokemon;
 let imgDiv = document.querySelector('.img-div')
 
 let allPokemon = [];
@@ -11,7 +12,7 @@ let allPokemon = [];
 
 
 function renderPokedex(pokemon) {
-    
+    console.log(pokemon)
     let pokemonLi = document.createElement('li');
     let pokemonSpanName = document.createElement('span');
     let pokemonSpanNumber = document.createElement('span');
@@ -24,13 +25,34 @@ function renderPokedex(pokemon) {
 
     pokemonLi.addEventListener('click', () => {
         imgDiv.innerHTML = '';
+        info.innerHTML = '';
         console.log('clicked', pokemon.name)
         let pokemonImg = document.createElement('img');
         pokemonImg.src = pokemon.sprites.other['official-artwork'].front_default;
         imgDiv.append(pokemonImg);
 
         pokemonImg.className = "poke-img"
-    })
+        let height = document.createElement('p')
+        let weight = document.createElement('p')
+        let type = document.createElement('p')
+        let name = document.createElement('p')
+        name.textContent = pokemon.name
+        height.textContent = `Height: ${pokemon.height}in`
+        weight.textContent = `Weight: ${pokemon.weight}lbs`
+        type.textContent = `Type: ${pokemon.types[0].type.name}`
+        info.append(name, height, weight, type)
+
+        fetch(`${descripUrl}${pokemon.id}/`) 
+        .then(res => res.json())
+        .then(data => {
+            let description = data.flavor_text_entries[0].flavor_text
+            let descrip = document.createElement('p')
+            descrip.textContent = `Description: ${description}`
+            descrip.className = 'description'
+            info.append(descrip)
+
+        })
+        })
 
     pokemonLi.append(pokemonSpanName, pokemonSpanNumber);
     pokemonUl.appendChild(pokemonLi);
@@ -38,7 +60,6 @@ function renderPokedex(pokemon) {
     
 
 }
-
 
 
 search.addEventListener('keyup', (e) => {
@@ -73,3 +94,11 @@ fetch(pokemonUrl)
 })
 
 
+
+// fetch(descripUrl)
+// .then(resp => resp.json())
+// .then(data => console.log(data))
+
+allPokemon.forEach(pokemon => {
+    console.log(pokemon)
+})

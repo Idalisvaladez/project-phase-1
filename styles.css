@@ -11,9 +11,19 @@
     background-color: #E45A5A;
     height: 10vh;
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
     padding-top: 50px;
 }
+.pokelogo {
+    display: flex;
+    position: relative;
+    top: -5px;
+    left: 100px;
+    width: 400px;
+    height: 400px;
+}
+
 
 .blue {
     background-color: #26D4FB;
@@ -180,7 +190,7 @@
     border-radius: 10%;
     border-style: solid;
     border-color: rgb(179, 0, 0);
-    background-image: linear-gradient(#FFC3C3, #be8282);
+    background-image: linear-gradient(#c2c8c9, #d8ecf8);
     border-width: 5px;
     height: 25vh;
     width: 20vw;
@@ -194,6 +204,7 @@
     position: absolute;
     height: inherit;
     width: inherit;
+    
 
 }
 
@@ -206,7 +217,7 @@
     height: 33vh;
     width: 20vw;
     background-color: #FFC3C3;
-    background-image: linear-gradient(#FFC3C3, #be8282);
+    background-image: linear-gradient(#c2c8c9, #d8ecf8);
     margin-left: 100px;
 }
 
@@ -221,8 +232,7 @@
 /* bottom section  */
 
 .bottom-section {
-    background-color: #00AAF7;
-    background-image: linear-gradient(#00AAF7, #0074aa);
+    background-image: linear-gradient(#63cbfc, #2a6c88);
     height: 10vh;
     display: flex;
     justify-content: space-between;

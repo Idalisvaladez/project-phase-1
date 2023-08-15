@@ -140,7 +140,7 @@
     object-fit: contain;
     margin-bottom: 10px;
     line-height: 20px;
-    padding-right: 25px;
+    padding-right: 40px;
 }
 
 .info-div > .description {
@@ -195,14 +195,9 @@
 
 ::-webkit-scrollbar {
     background-color: #FFC3C3;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #00a9f79d;
-    background-image: linear-gradient(#00a9f79d, #00a9f79d);
-    
     border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:active {
     background-color: #00a9f754;
     border-radius: 10px;
@@ -214,7 +209,7 @@
 }
 
 .img-div {
-    border-radius: 10%;
+    border-radius: 10px;
     border-style: solid;
     border-color: rgb(179, 0, 0);
     background-image: linear-gradient(#c2c8c9, #d8ecf8);
@@ -225,27 +220,34 @@
     position: relative;
     
 }
-.img-div > .poke-img{
-    object-fit: contain;
+.img-div  .poke-img{
+    object-fit: contain; 
     object-position: center;
-    position: absolute;
+    position: absolute; 
 
-    height: 230px;
-    width: auto;
-    left:80px;
+    height: auto;
+    width: 12vw;
+    bottom: -1px;
     
 
     height: inherit;
     width: inherit;
+    /* margin: 0 auto; */
+
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00a9f79d;
+    background-image: linear-gradient(#00a9f79d, #00a9f79d);
     
-
-
+    border-radius: 10px;
 }
 
 .info-div {
     border-style: solid;
     border-color: rgb(179, 0, 0);
-    border-radius: 10%;
+    border-radius: 10px;
     border-width: 5px;
     margin-top: 2vh;
     height: 33vh;
@@ -253,7 +255,9 @@
     background-color: #FFC3C3;
     background-image: linear-gradient(#c2c8c9, #d8ecf8);
     margin-left: 100px;
+    
 }
+
 
 .toggle-button {
     background-color: silver;

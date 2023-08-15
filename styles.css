@@ -223,19 +223,41 @@
 .img-div  .poke-img{
     object-fit: contain; 
     object-position: center;
+
     position: absolute; 
 
     height: auto;
     width: 12vw;
     bottom: -1px;
+
+    position: absolute;
+    height: 230px;
+    width: auto;
+
     
 
     height: inherit;
     width: inherit;
+
     /* margin: 0 auto; */
 
 
 }
+
+.img-div > .silver-img{
+    object-fit: contain;
+    object-position: center;
+    position: absolute;
+    height: 230px;
+    width: auto;
+    
+
+
+    height: inherit;
+    width: inherit;
+
+}
+
 
 ::-webkit-scrollbar-thumb {
     background-color: #00a9f79d;
@@ -243,6 +265,7 @@
     
     border-radius: 10px;
 }
+
 
 .info-div {
     border-style: solid;
@@ -261,10 +284,29 @@
 
 .toggle-button {
     background-color: silver;
+    background: radial-gradient(#ffffff, #91b0bea9);
+    border-style: solid;
+    border-color: rgb(82, 8, 8);
+    border-radius: 0%;
     width: 50px;
     height: 50px;
     margin-right: 50px;
     border-radius: 50px;
+
+}
+
+
+.toggle-button:active {
+    background-color: gold;
+    /* background: radial-gradient(#ffffff, #91b0bea9); */
+    border-style: solid;
+    border-color: rgb(82, 8, 8);
+    border-radius: 0%;
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+    border-radius: 50px;
+
 }
 
 /* bottom section  */

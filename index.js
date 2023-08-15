@@ -6,9 +6,7 @@ const search = document.querySelector('form');
 const info = document.querySelector('.info-div')
 
 let imgDiv = document.querySelector('.img-div')
-
 let allPokemon = [];
-
 
 
 function renderPokedex(pokemon) {
@@ -54,6 +52,10 @@ function renderPokedex(pokemon) {
         })
         })
 
+        console.log('clicked', pokemon.name)
+    })
+
+
     pokemonLi.append(pokemonSpanName, pokemonSpanNumber);
     pokemonUl.appendChild(pokemonLi);
 
@@ -78,7 +80,6 @@ search.addEventListener('keyup', (e) => {
 
 
 
-
 fetch(pokemonUrl)
 .then(resp => resp.json())
 .then(data => {
@@ -95,6 +96,7 @@ fetch(pokemonUrl)
 
 
 
+
 // fetch(descripUrl)
 // .then(resp => resp.json())
 // .then(data => console.log(data))
@@ -102,3 +104,5 @@ fetch(pokemonUrl)
 allPokemon.forEach(pokemon => {
     console.log(pokemon)
 })
+
+

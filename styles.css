@@ -107,6 +107,7 @@
 
 .mid-section {
     background-color: #E45A5A;
+    background-image: linear-gradient(#E45A5A, #9e1c1cb6);
     height: 80vh;
     display: flex;
     justify-content: space-evenly;
@@ -142,6 +143,9 @@
 
 .pokemon-list {
     list-style: none;
+    border-style: solid;
+    border-color: rgb(212, 150, 150);
+    border-width: 5px;
 }
 
 .pokemon-list li {
@@ -165,10 +169,14 @@
 }
 
 .main-screen {
+    border-style: solid;
+    border-color: rgb(179, 0, 0);
+    border-width: 5px;
     height: 60vh;
     width: 60vw;
     margin-left: 100px;
     background-color: #FFC3C3;
+    background-image: linear-gradient(#FFC3C3, #be8282);
     border-radius: 10px;
     overflow-y: auto;
     padding: 0 20px;
@@ -181,6 +189,12 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: #00a9f79d;
+    background-image: linear-gradient(#00a9f79d, #00a9f79d);
+    
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #00a9f754;
     border-radius: 10px;
 }
 
@@ -190,24 +204,43 @@
 }
 
 .img-div {
+    border-radius: 10%;
+    border-style: solid;
+    border-color: rgb(179, 0, 0);
+    background-image: linear-gradient(#FFC3C3, #be8282);
+    border-width: 5px;
     height: 25vh;
     width: 20vw;
     background-color: #FFC3C3;
     position: relative;
+    
 }
-.poke-img{
+.img-div > .poke-img{
+    object-fit: contain;
+    object-position: center;
     position: absolute;
+
     height: 230px;
     width: auto;
     left:80px;
     
+
+    height: inherit;
+    width: inherit;
+
+
 }
 
 .info-div {
+    border-style: solid;
+    border-color: rgb(179, 0, 0);
+    border-radius: 10%;
+    border-width: 5px;
     margin-top: 2vh;
     height: 33vh;
     width: 20vw;
     background-color: #FFC3C3;
+    background-image: linear-gradient(#FFC3C3, #be8282);
     margin-left: 100px;
 }
 
@@ -223,6 +256,7 @@
 
 .bottom-section {
     background-color: #00AAF7;
+    background-image: linear-gradient(#00AAF7, #0074aa);
     height: 10vh;
     display: flex;
     justify-content: space-between;
@@ -238,12 +272,14 @@
 
 .team-add {
     background-color: #14EA2A;
+    background-image: linear-gradient(#14EA2A, #058812);
     padding: 20px;
     border-radius: 10px;
 }
 
 .team-remove {
     background-color: red;
+    background-image: linear-gradient(rgb(233, 53, 53), rgb(155, 2, 2));
     padding: 20px;
     border-radius: 10px;
 }

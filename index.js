@@ -29,7 +29,7 @@ function findHeight(decimeter) {
 
 
 function renderPokedex(pokemon) {
-    // console.log(pokemon)
+
     let pokemonLi = document.createElement('li');
     let pokemonSpanName = document.createElement('span');
     let pokemonSpanNumber = document.createElement('span');
@@ -100,7 +100,7 @@ function renderPokedex(pokemon) {
                 }
             }
             let descrip = document.createElement('p')
-            descrip.textContent = `Description: ${description}`
+            descrip.textContent = description
             descrip.className = 'description'
             info.append(descrip)
 
@@ -115,8 +115,8 @@ function renderPokedex(pokemon) {
                 shinyImg.className = 'poke-img'
                 imgDiv.append(shinyImg)
 
+
             })
-            
 
         })
         })
@@ -144,6 +144,7 @@ teamAddBtn.addEventListener('click', e =>{
     alert("Your team has 6 members already!")
     }
 })
+
 
 
 search.addEventListener('keyup', (e) => {

@@ -55,7 +55,13 @@
         </div>
         <div class="info-screen">
             <div class="button-img-div">
-                <div class="toggle-button"></div>
+                <div class="toggle-button" onclick="audioShiny.play();">
+                    <script type="text/javascript">
+                        const audioShiny = new Audio()
+                        audioShiny.volume = 0.1
+                        audioShiny.src = "assets/shinyaudio.mp3";
+                    </script>
+                </div>
                 <div class="img-div"></div>
             </div>
             <div class="info-div"></div>

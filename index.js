@@ -8,6 +8,7 @@ const button = document.querySelector('.toggle-button')
 
 const teamAddBtn = document.querySelector('.team-add')
 const teamList = document.querySelector('.team-list')
+const deleteBtn = document.querySelector('.team-remove')
 
 
 
@@ -143,6 +144,11 @@ teamAddBtn.addEventListener('click', e =>{
     alert("Your team has 6 members already!")
     }
 })
+
+deleteBtn.addEventListener('click', () => {
+    let newTeam = teamCap.splice(-1);
+    console.log(teamCap)
+}) 
 
 
 

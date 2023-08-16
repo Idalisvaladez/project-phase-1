@@ -55,6 +55,32 @@ function renderPokedex(pokemon) {
         type.textContent = `Type: ${pokemon.types[0].type.name}`
         info.append(name, height, weight, type)
 
+        const typeStyles = {
+            'bug': { color: '#d5ed9d' },
+            'grass': { color: '#24b30e' },
+            'normal': { color: '#fcf7a9' },
+            'fire': { color: 'orange' },
+            'water': { color: '#0cb1f7' },
+            'electric': { color: '#e9ff42' },
+            'poison': { color: '#ff42f6' },
+            'ground': { color: '#8c7556' },
+            'psychic': { color: '#e892da'},
+            'dragon': { color: 'teal'},
+            'fairy': { color: 'pink'},
+            'fighting': { color: 'red'},
+            'ice': { color: 'blue'},
+            'ghost': { color: 'grey'},
+            'rock': { color: '#c7c118'},
+        }
+        
+        const typeInfo = typeStyles[pokemon.types[0].type.name];
+        
+        if (typeInfo) {
+            type.style.color = typeInfo.color;
+            type.style.borderBlockStyle = 'dotted';
+            type.style.borderColor = 'black';
+            type.style.textShadow = '-1px 1px 2px #000';
+        }
 
         fetch(`${descripUrl}${pokemon.id}/`) 
         .then(res => res.json())

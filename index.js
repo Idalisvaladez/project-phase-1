@@ -5,8 +5,10 @@ const pokemonUl = document.querySelector('.pokemon-list');
 const search = document.querySelector('form');
 const info = document.querySelector('.info-div')
 const button = document.querySelector('.toggle-button')
+
 const teamAddBtn = document.querySelector('.team-add')
 const teamList = document.querySelector('.team-list')
+
 
 
 let imgDiv = document.querySelector('.img-div')
@@ -112,7 +114,7 @@ function renderPokedex(pokemon) {
                 shinyImg.src = timesClicked % 2 ? pokemon.sprites.other['official-artwork'].front_default : pokemon.sprites.other['official-artwork'].front_shiny;
                 shinyImg.className = 'poke-img'
                 imgDiv.append(shinyImg)
-                
+
             })
             
 
@@ -173,6 +175,8 @@ fetch(pokemonUrl)
     });
 
 })
+
+
 
 
 

@@ -42,6 +42,7 @@ function renderPokedex(pokemon) {
         pokemonImg.src = pokemon.sprites.other['official-artwork'].front_default;
         imgDiv.append(pokemonImg);
         let timesClicked = 1;
+        button.style.backgroundColor = 'silver';
 
         pokemonImg.className = "poke-img"
         let height = document.createElement('p')

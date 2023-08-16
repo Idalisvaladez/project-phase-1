@@ -5,12 +5,16 @@ const pokemonUl = document.querySelector('.pokemon-list');
 const search = document.querySelector('form');
 const info = document.querySelector('.info-div')
 const button = document.querySelector('.toggle-button')
-// const addBtn = document.querySelector('.team-add')
-// const team = document.querySelector('.team-buttons')
+
+const teamAddBtn = document.querySelector('.team-add')
+const teamList = document.querySelector('.team-list')
+
+
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
-
+let currPokemon
+let pokeTeam = [];
 
 function findPounds(hectogram) {
     let pounds = hectogram * 0.2204622622;
@@ -37,6 +41,7 @@ function renderPokedex(pokemon) {
     pokemonSpanNumber.textContent = `#${pokemon.id}`;
 
     pokemonLi.addEventListener('click', () => {
+        currPokemon = pokemon
         imgDiv.innerHTML = '';
         info.innerHTML = '';
         console.log('clicked', pokemon.name)
@@ -125,7 +130,20 @@ function renderPokedex(pokemon) {
     
 }
 
-
+let teamCap = []
+teamAddBtn.addEventListener('click', e =>{
+    e.preventDefault()
+    if (teamCap.length < 6){ 
+    let teamImg = document.createElement('img')
+    let pokeImg = document.createElement('li')
+    teamImg.src = currPokemon.sprites.other['official-artwork'].front_default
+    pokeImg.append(teamImg)
+    teamList.append(pokeImg)
+    teamCap.push(teamImg)
+    } else {
+    alert("Your team has 6 members already!")
+    }
+})
 
 
 search.addEventListener('keyup', (e) => {

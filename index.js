@@ -13,7 +13,6 @@ const teamList = document.querySelector('.team-list')
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
-let currPokemon
 let pokeTeam = [];
 
 function findPounds(hectogram) {
@@ -144,6 +143,7 @@ teamAddBtn.addEventListener('click', e =>{
     alert("Your team has 6 members already!")
     }
 })
+
 
 
 

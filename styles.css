@@ -292,13 +292,13 @@
     height: 50px;
     margin-right: 50px;
     border-radius: 50px;
-
+    cursor: pointer;
 }
 
 
 .toggle-button:active {
     background-color: gold;
-    /* background: radial-gradient(#ffffff, #91b0bea9); */
+    background: radial-gradient(#ffffff, #91b0bea9);
     border-style: solid;
     border-color: rgb(82, 8, 8);
     border-radius: 0%;
@@ -308,6 +308,8 @@
     border-radius: 50px;
 
 }
+
+
 
 /* bottom section  */
 

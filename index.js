@@ -12,7 +12,7 @@ const deleteBtn = document.querySelector('.team-remove')
 const teamLi = document.querySelectorAll('#empty')
 
 
-console.log(teamLi[0])
+
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
@@ -159,9 +159,11 @@ teamAddBtn.addEventListener('click', () => {
 })
 
 
+
 deleteBtn.addEventListener('click', () => {
-    let newTeam = teamCap.splice(-1);
-    console.log(teamCap)
+    let newTeam = teamCap.pop()
+    console.log(newTeam)
+
 }) 
 
 

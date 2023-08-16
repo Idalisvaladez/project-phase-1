@@ -46,8 +46,8 @@
                 <ul class="pokemon-list" onclick="audio.play();">
                     <script type="text/javascript">
                         const audio = new Audio()
-                        audio.volume = 0.2
-                        audio.src = "./buttonsound.mp3";
+                        audio.volume = 0.1
+                        audio.src = "assets/buttonsound.mp3";
                     </script>
                     
                 </ul>
@@ -71,8 +71,20 @@
             <li class="pokemon-team" id="empty"></li> 
         </ul>
         <div class="team-buttons">
-            <button class="team-add">Add To Team</button>
-            <button class="team-remove">Remove From Team</button>
+            <button class="team-add" onclick="audio2.play();">
+                <script type="text/javascript">
+                    const audio2 = new Audio()
+                    audio2.volume = 
+                    audio2.src = "assets/addsound.mp3";
+                </script>
+                Add To Team</button>
+            <button class="team-remove" onclick="audio3.play();">
+                <script type="text/javascript">
+                    const audio3 = new Audio()
+                    audio3.volume = 
+                    audio3.src = "assets/deletesound.mp3";
+                </script>
+                Remove From Team</button>
         </div>
     </section>
         <script src="index.js" defer></script>

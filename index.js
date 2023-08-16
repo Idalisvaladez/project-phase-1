@@ -59,7 +59,13 @@ function renderPokedex(pokemon) {
         fetch(`${descripUrl}${pokemon.id}/`) 
         .then(res => res.json())
         .then(data => {
-            let description = data.flavor_text_entries[0].flavor_text
+            console.log(data)
+            let description;
+            for (let i = 0; i < 10; i++) {
+                if (data.flavor_text_entries[i].language.name === 'en') {
+                     description = data.flavor_text_entries[i].flavor_text;
+                }
+            }
             let descrip = document.createElement('p')
             descrip.textContent = `Description: ${description}`
             descrip.className = 'description'

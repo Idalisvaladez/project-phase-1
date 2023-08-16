@@ -5,8 +5,7 @@ const pokemonUl = document.querySelector('.pokemon-list');
 const search = document.querySelector('form');
 const info = document.querySelector('.info-div')
 const button = document.querySelector('.toggle-button')
-// const addBtn = document.querySelector('.team-add')
-// const team = document.querySelector('.team-buttons')
+
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
@@ -25,7 +24,7 @@ function findHeight(decimeter) {
 
 
 function renderPokedex(pokemon) {
-    // console.log(pokemon)
+
     let pokemonLi = document.createElement('li');
     let pokemonSpanName = document.createElement('span');
     let pokemonSpanNumber = document.createElement('span');
@@ -95,7 +94,7 @@ function renderPokedex(pokemon) {
                 }
             }
             let descrip = document.createElement('p')
-            descrip.textContent = `Description: ${description}`
+            descrip.textContent = description
             descrip.className = 'description'
             info.append(descrip)
 
@@ -110,8 +109,8 @@ function renderPokedex(pokemon) {
                 shinyImg.className = 'poke-img'
                 imgDiv.append(shinyImg)
 
+
             })
-            
 
         })
         })
@@ -125,6 +124,20 @@ function renderPokedex(pokemon) {
     
 }
 
+let teamCap = []
+teamAddBtn.addEventListener('click', e =>{
+    e.preventDefault()
+    if (teamCap.length < 6){ 
+    let teamImg = document.createElement('img')
+    let pokeImg = document.createElement('li')
+    teamImg.src = currPokemon.sprites.other['official-artwork'].front_default
+    pokeImg.append(teamImg)
+    teamList.append(pokeImg)
+    teamCap.push(teamImg)
+    } else {
+    alert("Your team has 6 members already!")
+    }
+})
 
 
 

@@ -6,10 +6,15 @@ const search = document.querySelector('form');
 const info = document.querySelector('.info-div')
 const button = document.querySelector('.toggle-button')
 
+const teamAddBtn = document.querySelector('.team-add')
+const teamList = document.querySelector('.team-list')
+
+
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
-
+let currPokemon
+let pokeTeam = [];
 
 function findPounds(hectogram) {
     let pounds = hectogram * 0.2204622622;
@@ -36,6 +41,7 @@ function renderPokedex(pokemon) {
     pokemonSpanNumber.textContent = `#${pokemon.id}`;
 
     pokemonLi.addEventListener('click', () => {
+        currPokemon = pokemon
         imgDiv.innerHTML = '';
         info.innerHTML = '';
         console.log('clicked', pokemon.name)

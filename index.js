@@ -23,7 +23,7 @@ function findHeight(decimeter) {
 
 
 function renderPokedex(pokemon) {
-    console.log(pokemon)
+    // console.log(pokemon)
     let pokemonLi = document.createElement('li');
     let pokemonSpanName = document.createElement('span');
     let pokemonSpanNumber = document.createElement('span');
@@ -41,7 +41,7 @@ function renderPokedex(pokemon) {
         let pokemonImg = document.createElement('img');
         pokemonImg.src = pokemon.sprites.other['official-artwork'].front_default;
         imgDiv.append(pokemonImg);
-
+        let timesClicked = 1;
 
         pokemonImg.className = "poke-img"
         let height = document.createElement('p')
@@ -66,19 +66,22 @@ function renderPokedex(pokemon) {
 
 
             button.addEventListener('click', () => {
+                timesClicked += 1;
+                console.log(timesClicked)
+                button.style.backgroundColor = timesClicked % 2 ? 'silver' : 'rgb(251, 217, 25)';
                 imgDiv.innerHTML = '';
                 let shinyImg = document.createElement('img');
-                shinyImg.src = pokemon.sprites.other['official-artwork'].front_shiny;
-                shinyImg.className = 'silver-img'
+                shinyImg.src = timesClicked % 2 ? pokemon.sprites.other['official-artwork'].front_default : pokemon.sprites.other['official-artwork'].front_shiny;
+                shinyImg.className = 'poke-img'
                 imgDiv.append(shinyImg)
-
+                
             })
             
 
         })
         })
 
-        console.log('clicked', pokemon.name)
+        
 
 
     pokemonLi.append(pokemonSpanName, pokemonSpanNumber);
@@ -86,6 +89,8 @@ function renderPokedex(pokemon) {
 
     
 }
+
+
 
 
 search.addEventListener('keyup', (e) => {

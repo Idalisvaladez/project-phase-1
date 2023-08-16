@@ -9,7 +9,7 @@ const button = document.querySelector('.toggle-button')
 const teamAddBtn = document.querySelector('.team-add')
 const teamList = document.querySelector('.team-list')
 const deleteBtn = document.querySelector('.team-remove')
-
+const teamLi = document.querySelector('.pokemon-team')
 
 
 let imgDiv = document.querySelector('.img-div')
@@ -133,14 +133,16 @@ function renderPokedex(pokemon) {
 let teamCap = []
 teamAddBtn.addEventListener('click', e =>{
     e.preventDefault()
-    if (teamCap.length < 6){ 
+    if (teamCap.length < 6 && teamLi.id === 'empty'){ 
     let teamImg = document.createElement('img')
-    let pokeImg = document.createElement('li')
+    teamImg.className = 'team-image'
     teamImg.src = currPokemon.sprites.other['official-artwork'].front_default
-    pokeImg.append(teamImg)
-    teamList.append(pokeImg)
+    teamLi.append(teamImg)
     teamCap.push(teamImg)
-    } else {
+    teamLi.id = 'taken'
+    
+    }
+    else {
     alert("Your team has 6 members already!")
     }
 })

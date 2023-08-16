@@ -358,3 +358,9 @@
     border-radius: 10px;
     position: relative;
 }
+
+.team-image {
+    position: absolute;
+    height: 60px;
+    width: auto;
+}

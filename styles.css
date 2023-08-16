@@ -341,3 +341,20 @@
     padding: 20px;
     border-radius: 10px;
 }
+
+.team-list {
+    list-style: none;
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.pokemon-team {
+    border: 1px solid black;
+    width: 5vw;
+    height: 60px;
+    background-image: linear-gradient(#c2c8c9, #d8ecf8);
+    border-radius: 10px;
+    position: relative;
+}

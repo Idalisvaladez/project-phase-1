@@ -10,6 +10,18 @@ let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
 
 
+function findPounds(hectogram) {
+    let pounds = hectogram * 0.2204622622;
+    return Math.round(pounds);
+}
+
+function findHeight(decimeter) {
+    let inches = decimeter * 3.937;
+    return Math.round(inches);
+}
+
+
+
 function renderPokedex(pokemon) {
     console.log(pokemon)
     let pokemonLi = document.createElement('li');
@@ -37,8 +49,8 @@ function renderPokedex(pokemon) {
         let type = document.createElement('p')
         let name = document.createElement('p')
         name.textContent = pokemon.name
-        height.textContent = `Height: ${pokemon.height}in`
-        weight.textContent = `Weight: ${pokemon.weight}lbs`
+        height.textContent = `Height: ${findHeight(pokemon.height)} in`
+        weight.textContent = `Weight: ${findPounds(pokemon.weight)} lbs`
         type.textContent = `Type: ${pokemon.types[0].type.name}`
         info.append(name, height, weight, type)
 
@@ -109,16 +121,6 @@ fetch(pokemonUrl)
 
 
 
-// fetch(descripUrl)
-// .then(resp => resp.json())
-// .then(data => console.log(data))
 
 
-
-button.addEventListener('click', () => {
-    imgDiv.innerHTML = '';
-    let shinyImg = document.createElement('img');
-        shinyImg.src = pokemon.sprites.other['official-artwork'].front_shiny;
-        imgDiv.append(shinyImg)
-})
 

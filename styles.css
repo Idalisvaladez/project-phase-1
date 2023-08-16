@@ -359,8 +359,10 @@
     position: relative;
 }
 
-.team-image {
+.pokemon-team > .team-image {
+    object-fit: contain;
+    object-position: center;
     position: absolute;
-    height: 60px;
-    width: auto;
+    height: inherit;
+    width: inherit;
 }

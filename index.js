@@ -5,6 +5,8 @@ const pokemonUl = document.querySelector('.pokemon-list');
 const search = document.querySelector('form');
 const info = document.querySelector('.info-div')
 const button = document.querySelector('.toggle-button')
+// const addBtn = document.querySelector('.team-add')
+// const team = document.querySelector('.team-buttons')
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
@@ -23,7 +25,7 @@ function findHeight(decimeter) {
 
 
 function renderPokedex(pokemon) {
-    console.log(pokemon)
+    // console.log(pokemon)
     let pokemonLi = document.createElement('li');
     let pokemonSpanName = document.createElement('span');
     let pokemonSpanNumber = document.createElement('span');
@@ -41,7 +43,8 @@ function renderPokedex(pokemon) {
         let pokemonImg = document.createElement('img');
         pokemonImg.src = pokemon.sprites.other['official-artwork'].front_default;
         imgDiv.append(pokemonImg);
-
+        let timesClicked = 1;
+        button.style.backgroundColor = 'silver';
 
         pokemonImg.className = "poke-img"
         let height = document.createElement('p')
@@ -54,11 +57,43 @@ function renderPokedex(pokemon) {
         type.textContent = `Type: ${pokemon.types[0].type.name}`
         info.append(name, height, weight, type)
 
+        const typeStyles = {
+            'bug': { color: '#d5ed9d' },
+            'grass': { color: '#24b30e' },
+            'normal': { color: '#fcf7a9' },
+            'fire': { color: 'orange' },
+            'water': { color: '#0cb1f7' },
+            'electric': { color: '#e9ff42' },
+            'poison': { color: '#ff42f6' },
+            'ground': { color: '#8c7556' },
+            'psychic': { color: '#e892da'},
+            'dragon': { color: 'teal'},
+            'fairy': { color: 'pink'},
+            'fighting': { color: 'red'},
+            'ice': { color: 'blue'},
+            'ghost': { color: 'grey'},
+            'rock': { color: '#c7c118'},
+        }
+        
+        const typeInfo = typeStyles[pokemon.types[0].type.name];
+        
+        if (typeInfo) {
+            type.style.color = typeInfo.color;
+            type.style.borderBlockStyle = 'dotted';
+            type.style.borderColor = 'black';
+            type.style.textShadow = '-1px 1px 2px #000';
+        }
 
         fetch(`${descripUrl}${pokemon.id}/`) 
         .then(res => res.json())
         .then(data => {
-            let description = data.flavor_text_entries[0].flavor_text
+            console.log(data)
+            let description;
+            for (let i = 0; i < 10; i++) {
+                if (data.flavor_text_entries[i].language.name === 'en') {
+                     description = data.flavor_text_entries[i].flavor_text;
+                }
+            }
             let descrip = document.createElement('p')
             descrip.textContent = `Description: ${description}`
             descrip.className = 'description'
@@ -66,10 +101,13 @@ function renderPokedex(pokemon) {
 
 
             button.addEventListener('click', () => {
+                timesClicked += 1;
+                console.log(timesClicked)
+                button.style.backgroundColor = timesClicked % 2 ? 'silver' : 'rgb(251, 217, 25)';
                 imgDiv.innerHTML = '';
                 let shinyImg = document.createElement('img');
-                shinyImg.src = pokemon.sprites.other['official-artwork'].front_shiny;
-                shinyImg.className = 'silver-img'
+                shinyImg.src = timesClicked % 2 ? pokemon.sprites.other['official-artwork'].front_default : pokemon.sprites.other['official-artwork'].front_shiny;
+                shinyImg.className = 'poke-img'
                 imgDiv.append(shinyImg)
 
             })
@@ -78,7 +116,7 @@ function renderPokedex(pokemon) {
         })
         })
 
-        console.log('clicked', pokemon.name)
+        
 
 
     pokemonLi.append(pokemonSpanName, pokemonSpanNumber);
@@ -86,6 +124,8 @@ function renderPokedex(pokemon) {
 
     
 }
+
+
 
 
 search.addEventListener('keyup', (e) => {
@@ -117,6 +157,8 @@ fetch(pokemonUrl)
     });
 
 })
+
+
 
 
 

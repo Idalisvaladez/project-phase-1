@@ -160,11 +160,7 @@ teamAddBtn.addEventListener('click', () => {
 
 
 
-deleteBtn.addEventListener('click', () => {
-    let newTeam = teamCap.pop()
-    console.log(newTeam)
 
-}) 
 
 
 

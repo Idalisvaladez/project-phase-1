@@ -176,11 +176,14 @@ function displayTeam(array) {
 
 
 
+
+
 deleteBtn.addEventListener('click', () => {
     teamCap.splice(selectedPokemon, 1);
     console.log(teamCap)
     displayTeam(teamCap);
 }) 
+
 
 
 

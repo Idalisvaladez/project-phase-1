@@ -10,9 +10,9 @@ const teamAddBtn = document.querySelector('.team-add')
 const teamList = document.querySelector('.team-list')
 const deleteBtn = document.querySelector('.team-remove')
 const teamLi = document.querySelectorAll('#empty')
+let toggle = false;
 
-
-
+console.log(teamLi[0])
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
@@ -49,6 +49,7 @@ function renderPokedex(pokemon) {
     }
 
     pokemonLi.addEventListener('click', () => {
+        toggle = false;
         currPokemon = pokemon
         imgDiv.innerHTML = '';
         info.innerHTML = '';
@@ -114,6 +115,8 @@ function renderPokedex(pokemon) {
 
 
             button.addEventListener('click', () => {
+                toggle = timesClicked % 2 ? true : false;
+                console.log(toggle)
                 timesClicked += 1;
                 console.log(timesClicked)
                 button.style.backgroundColor = timesClicked % 2 ? 'silver' : 'rgb(251, 217, 25)';
@@ -149,7 +152,7 @@ teamAddBtn.addEventListener('click', () => {
     if (teamCap.length < 6) { 
     let teamImg = document.createElement('img')
     teamImg.className = 'team-image'
-    teamImg.src = currPokemon.sprites.other['official-artwork'].front_default
+    teamImg.src = !toggle ? currPokemon.sprites.other['official-artwork'].front_default : currPokemon.sprites.other['official-artwork'].front_shiny;
     teamCap.push(teamImg)
     displayTeam(teamCap)
    
@@ -169,21 +172,29 @@ function displayTeam(array) {
         teamCap[i].style.cursor = 'pointer';
         teamCap[i].addEventListener('click', () => {
             selectedPokemon = teamCap.indexOf(teamCap[i]);
+            selectedPokemonBorderColor(i);
             console.log(selectedPokemon);
         })
     }
 }
 
+function selectedPokemonBorderColor(index) {
+    for (let i = 0; i < 6; i++) {
+        teamLi[i].style.border = '1px solid black';
+    }
 
-
+    teamLi[index].style.border = '2px solid blue';
+}
 
 
 deleteBtn.addEventListener('click', () => {
+    for (let i = 0; i < 6; i++) {
+        teamLi[i].style.border = '1px solid black';
+    }
     teamCap.splice(selectedPokemon, 1);
     console.log(teamCap)
     displayTeam(teamCap);
 }) 
-
 
 
 
@@ -217,9 +228,6 @@ fetch(pokemonUrl)
     });
 
 })
-
-
-
 
 
 

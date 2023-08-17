@@ -12,7 +12,7 @@ const deleteBtn = document.querySelector('.team-remove')
 const teamLi = document.querySelectorAll('#empty')
 let toggle = false;
 
-
+console.log(teamLi[0])
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
@@ -187,9 +187,6 @@ function selectedPokemonBorderColor(index) {
 }
 
 
-
-
-
 deleteBtn.addEventListener('click', () => {
     for (let i = 0; i < 6; i++) {
         teamLi[i].style.border = '1px solid black';
@@ -198,7 +195,6 @@ deleteBtn.addEventListener('click', () => {
     console.log(teamCap)
     displayTeam(teamCap);
 }) 
-
 
 
 
@@ -232,9 +228,6 @@ fetch(pokemonUrl)
     });
 
 })
-
-
-
 
 
 

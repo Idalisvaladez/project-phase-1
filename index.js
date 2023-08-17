@@ -194,6 +194,7 @@ deleteBtn.addEventListener('click', () => {
     teamCap.splice(selectedPokemon, 1);
     console.log(teamCap)
     displayTeam(teamCap);
+    
 }) 
 
 
@@ -201,8 +202,9 @@ deleteBtn.addEventListener('click', () => {
 
 search.addEventListener('keyup', (e) => {
     e.preventDefault()
-    let iterator = e.target.value.length;
-    let searchArray = e.target.value.split('');
+    let lower = (e.target.value).toLowerCase()
+    let iterator = lower.length;
+    let searchArray = lower.split('');
     pokemonUl.innerHTML = '';
     allPokemon.forEach(pokemon => {
         let splitName = pokemon.name.split('', iterator);
@@ -213,22 +215,25 @@ search.addEventListener('keyup', (e) => {
     })
 })
 
-
-
 fetch(pokemonUrl)
 .then(resp => resp.json())
 .then(data => {
-    data.results.forEach(pokemon => {
-        fetch(`${url}/${pokemon.name}`)
-        .then(resp => resp.json())
-        .then(data => {
-            renderPokedex(data);
-            allPokemon.push(data);
-        })
+    const fetchPromises = data.results.map(pokemon => {
+    return fetch(`${url}/${pokemon.name}`).then(resp => resp.json());
     });
 
-})
-
+    Promise.all(fetchPromises)
+    .then(pokemonDataArray => {
+        pokemonDataArray.forEach(pokemonData => {
+        renderPokedex(pokemonData);
+        allPokemon.push(pokemonData);
+        });
+    })
+    .catch(error => {
+        // Handle errors
+        console.error("Error fetching Pokemon data:", error);
+    });
+});
 
 
 

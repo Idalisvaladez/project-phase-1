@@ -142,24 +142,47 @@ let count = -1
 let teamCap = []
 teamAddBtn.addEventListener('click', () => {
     count += 1
+    
     if (count > 5) {
         count = 0
     }
-    if (teamLi[count].id === 'empty') { 
+    if (teamCap.length < 6) { 
     let teamImg = document.createElement('img')
     teamImg.className = 'team-image'
     teamImg.src = currPokemon.sprites.other['official-artwork'].front_default
-    teamLi[count].append(teamImg)
     teamCap.push(teamImg)
+    displayTeam(teamCap)
+   
     teamLi[count].id = 'taken'
     }
     else {
     alert("Your team has 6 members already!")
     }
+
+    console.log(teamCap)
 })
+let selectedPokemon;
+function displayTeam(array) {
+    for (let i = 0; i < array.length; i++) {
+        teamLi[i].innerHTML = '';
+        teamLi[i].append(teamCap[i]);
+        teamCap[i].style.cursor = 'pointer';
+        teamCap[i].addEventListener('click', () => {
+            selectedPokemon = teamCap.indexOf(teamCap[i]);
+            console.log(selectedPokemon);
+        })
+    }
+}
 
 
 
+
+
+deleteBtn.addEventListener('click', () => {
+    teamCap.splice(selectedPokemon, 1);
+    console.log(teamCap)
+    displayTeam(teamCap);
+}) 
 
 
 

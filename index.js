@@ -12,7 +12,7 @@ const deleteBtn = document.querySelector('.team-remove')
 const teamLi = document.querySelectorAll('#empty')
 
 
-console.log(teamLi[0])
+
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
@@ -173,6 +173,7 @@ function displayTeam(array) {
         })
     }
 }
+
 
 
 deleteBtn.addEventListener('click', () => {

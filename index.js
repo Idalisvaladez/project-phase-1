@@ -10,9 +10,9 @@ const teamAddBtn = document.querySelector('.team-add')
 const teamList = document.querySelector('.team-list')
 const deleteBtn = document.querySelector('.team-remove')
 const teamLi = document.querySelectorAll('#empty')
+let toggle = false;
 
-
-
+console.log(teamLi[0])
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
@@ -49,6 +49,7 @@ function renderPokedex(pokemon) {
     }
 
     pokemonLi.addEventListener('click', () => {
+        toggle = false;
         currPokemon = pokemon
         imgDiv.innerHTML = '';
         info.innerHTML = '';
@@ -114,6 +115,8 @@ function renderPokedex(pokemon) {
 
 
             button.addEventListener('click', () => {
+                toggle = timesClicked % 2 ? true : false;
+                console.log(toggle)
                 timesClicked += 1;
                 console.log(timesClicked)
                 button.style.backgroundColor = timesClicked % 2 ? 'silver' : 'rgb(251, 217, 25)';
@@ -149,7 +152,7 @@ teamAddBtn.addEventListener('click', () => {
     if (teamCap.length < 6) { 
     let teamImg = document.createElement('img')
     teamImg.className = 'team-image'
-    teamImg.src = currPokemon.sprites.other['official-artwork'].front_default
+    teamImg.src = !toggle ? currPokemon.sprites.other['official-artwork'].front_default : currPokemon.sprites.other['official-artwork'].front_shiny;
     teamCap.push(teamImg)
     displayTeam(teamCap)
    
@@ -169,29 +172,60 @@ function displayTeam(array) {
         teamCap[i].style.cursor = 'pointer';
         teamCap[i].addEventListener('click', () => {
             selectedPokemon = teamCap.indexOf(teamCap[i]);
+            selectedPokemonBorderColor(i);
             console.log(selectedPokemon);
         })
     }
 }
 
+function selectedPokemonBorderColor(index) {
+    for (let i = 0; i < 6; i++) {
+        teamLi[i].style.border = '1px solid black';
+    }
 
-
+    teamLi[index].style.border = '2px solid blue';
+}
 
 
 deleteBtn.addEventListener('click', () => {
-    teamCap.splice(selectedPokemon, 1);
-    console.log(teamCap)
-    displayTeam(teamCap);
-}) 
+    for (let i = 0; i < 6; i++) {
+        teamLi[i].style.border = '1px solid black';
+    }
 
+    if (selectedPokemon === teamCap.indexOf(teamCap[selectedPokemon])) {
+        console.log(selectedPokemon)
+        teamLi[selectedPokemon].innerHTML = '';
+        teamCap.splice(selectedPokemon, 1);
+        console.log(teamCap)
+        displayTeam(teamCap);
+    } else if (selectedPokemon === undefined && teamCap.length === 1) {
+        teamLi[0].innerHTML = '';
+        teamCap.splice(selectedPokemon, 1);
+        console.log(teamCap)
+        displayTeam(teamCap);
+    } 
+    else {
+        selectedPokemon = 0;
+        console.log(selectedPokemon)
+        teamCap.splice(selectedPokemon, 1);
+        console.log(teamCap)
+        displayTeam(teamCap);
+    }
+
+    // teamCap.splice(selectedPokemon, 1);
+    // console.log(teamCap)
+    // displayTeam(teamCap);
+    
+}) 
 
 
 
 
 search.addEventListener('keyup', (e) => {
     e.preventDefault()
-    let iterator = e.target.value.length;
-    let searchArray = e.target.value.split('');
+    let lower = (e.target.value).toLowerCase()
+    let iterator = lower.length;
+    let searchArray = lower.split('');
     pokemonUl.innerHTML = '';
     allPokemon.forEach(pokemon => {
         let splitName = pokemon.name.split('', iterator);
@@ -202,25 +236,25 @@ search.addEventListener('keyup', (e) => {
     })
 })
 
-
-
 fetch(pokemonUrl)
 .then(resp => resp.json())
 .then(data => {
-    data.results.forEach(pokemon => {
-        fetch(`${url}/${pokemon.name}`)
-        .then(resp => resp.json())
-        .then(data => {
-            renderPokedex(data);
-            allPokemon.push(data);
-        })
+    const fetchPromises = data.results.map(pokemon => {
+    return fetch(`${url}/${pokemon.name}`).then(resp => resp.json());
     });
 
-})
-
-
-
-
+    Promise.all(fetchPromises)
+    .then(pokemonDataArray => {
+        pokemonDataArray.forEach(pokemonData => {
+        renderPokedex(pokemonData);
+        allPokemon.push(pokemonData);
+        });
+    })
+    .catch(error => {
+        // Handle errors
+        console.error("Error fetching Pokemon data:", error);
+    });
+});
 
 
 

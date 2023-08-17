@@ -191,9 +191,30 @@ deleteBtn.addEventListener('click', () => {
     for (let i = 0; i < 6; i++) {
         teamLi[i].style.border = '1px solid black';
     }
-    teamCap.splice(selectedPokemon, 1);
-    console.log(teamCap)
-    displayTeam(teamCap);
+
+    if (selectedPokemon === teamCap.indexOf(teamCap[selectedPokemon])) {
+        console.log(selectedPokemon)
+        teamLi[selectedPokemon].innerHTML = '';
+        teamCap.splice(selectedPokemon, 1);
+        console.log(teamCap)
+        displayTeam(teamCap);
+    } else if (selectedPokemon === undefined && teamCap.length === 1) {
+        teamLi[0].innerHTML = '';
+        teamCap.splice(selectedPokemon, 1);
+        console.log(teamCap)
+        displayTeam(teamCap);
+    } 
+    else {
+        selectedPokemon = 0;
+        console.log(selectedPokemon)
+        teamCap.splice(selectedPokemon, 1);
+        console.log(teamCap)
+        displayTeam(teamCap);
+    }
+
+    // teamCap.splice(selectedPokemon, 1);
+    // console.log(teamCap)
+    // displayTeam(teamCap);
     
 }) 
 

@@ -45,13 +45,7 @@ function renderPokedex(pokemon) {
 
     pokemonSpanName.textContent = pokemon.name;
     pokemonSpanNumber.textContent = `#${pokemon.id}`;
-
-    function selectSound(){
-        let audio = new Audio();
-        audio.src = "./buttonsound.mp3";
-        audio.play
-    }
-
+    
     pokemonLi.addEventListener('click', () => {
         toggle = false;
         currPokemon = pokemon
@@ -129,7 +123,6 @@ function renderPokedex(pokemon) {
 
 
             })
-            selectSound()
         })
         })
 

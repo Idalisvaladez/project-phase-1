@@ -11,9 +11,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css">
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-        <audio id="select">
-            <source src="assets/buttonsound.mp3" type="audio/mpeg">
-          </audio>
     </head>
     <body>
         <section class="top-section">
@@ -46,8 +43,8 @@
                 <ul class="pokemon-list" onclick="audio.play();">
                     <script type="text/javascript">
                         const audio = new Audio()
-                        audio.volume = 0.1
-                        audio.src = "assets/buttonsound.mp3";
+                        audio.volume = 0.5
+                        audio.src = "assets/selectsound.mp3";
                     </script>
                     
                 </ul>
@@ -58,7 +55,7 @@
                 <div class="toggle-button" onclick="audioShiny.play();">
                     <script type="text/javascript">
                         const audioShiny = new Audio()
-                        audioShiny.volume = 0.1
+                        audioShiny.volume = 0.2
                         audioShiny.src = "assets/shinyaudio.mp3";
                     </script>
                 </div>

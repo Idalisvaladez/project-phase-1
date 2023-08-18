@@ -12,24 +12,28 @@ const deleteBtn = document.querySelector('.team-remove')
 const teamLi = document.querySelectorAll('#empty')
 let toggle = false;
 
-console.log(teamLi[0])
+
 
 let imgDiv = document.querySelector('.img-div')
 let allPokemon = [];
 let pokeTeam = [];
 
+
+// Convert given hectograms into pounds for pokemon
 function findPounds(hectogram) {
     let pounds = hectogram * 0.2204622622;
     return Math.round(pounds);
 }
 
+// Convert given decimeters into inches for pokemon
 function findHeight(decimeter) {
     let inches = decimeter * 3.937;
     return Math.round(inches);
 }
 
 
-
+// Render pokemon from Fetch statement onto the main screen
+// Adds event listeners to display pokemon on Info and Img screens
 function renderPokedex(pokemon) {
 
     let pokemonLi = document.createElement('li');
@@ -53,7 +57,6 @@ function renderPokedex(pokemon) {
         currPokemon = pokemon
         imgDiv.innerHTML = '';
         info.innerHTML = '';
-        console.log('clicked', pokemon.name)
         let pokemonImg = document.createElement('img');
         pokemonImg.src = pokemon.sprites.other['official-artwork'].front_default;
         imgDiv.append(pokemonImg);
@@ -98,10 +101,10 @@ function renderPokedex(pokemon) {
             type.style.textShadow = '-1px 1px 2px #000';
         }
 
+        // fetches the pokemon's description to display in Info Screen
         fetch(`${descripUrl}${pokemon.id}/`) 
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             let description;
             for (let i = 0; i < 10; i++) {
                 if (data.flavor_text_entries[i].language.name === 'en') {
@@ -113,12 +116,10 @@ function renderPokedex(pokemon) {
             descrip.className = 'description'
             info.append(descrip)
 
-
+            // event listener to change pokemon's picture from Default to Silver and back
             button.addEventListener('click', () => {
                 toggle = timesClicked % 2 ? true : false;
-                console.log(toggle)
                 timesClicked += 1;
-                console.log(timesClicked)
                 button.style.backgroundColor = timesClicked % 2 ? 'silver' : 'rgb(251, 217, 25)';
                 imgDiv.innerHTML = '';
                 let shinyImg = document.createElement('img');
@@ -132,15 +133,13 @@ function renderPokedex(pokemon) {
         })
         })
 
-        
-
-
     pokemonLi.append(pokemonSpanName, pokemonSpanNumber);
     pokemonUl.appendChild(pokemonLi);
 
-    
 }
 
+
+// Event listener to add pokemon into the team section from main screen
 let count = -1
 let teamCap = []
 teamAddBtn.addEventListener('click', () => {
@@ -161,9 +160,9 @@ teamAddBtn.addEventListener('click', () => {
     else {
     alert("Your team has 6 members already!")
     }
-
-    console.log(teamCap)
 })
+
+// Displays team to Team section after Add To Team is clicked
 let selectedPokemon;
 function displayTeam(array) {
     for (let i = 0; i < array.length; i++) {
@@ -173,10 +172,11 @@ function displayTeam(array) {
         teamCap[i].addEventListener('click', () => {
             selectedPokemon = teamCap.indexOf(teamCap[i]);
             selectedPokemonBorderColor(i);
-            console.log(selectedPokemon);
         })
     }
 }
+
+// Changes selected Pokemon's border color when clicked
 
 function selectedPokemonBorderColor(index) {
     for (let i = 0; i < 6; i++) {
@@ -187,39 +187,46 @@ function selectedPokemonBorderColor(index) {
 }
 
 
-deleteBtn.addEventListener('click', () => {
-    for (let i = 0; i < 6; i++) {
-        teamLi[i].style.border = '1px solid black';
-    }
+// Delete button to clear pokemon from Teams Section
+let singleClick = true;
+deleteBtn.addEventListener('click', () => { 
+    setTimeout(() => {
+        if (singleClick) {
+            for (let i = 0; i < 6; i++) {
+                teamLi[i].style.border = '1px solid black';
+            }
 
-    if (selectedPokemon === teamCap.indexOf(teamCap[selectedPokemon])) {
-        console.log(selectedPokemon)
-        teamLi[selectedPokemon].innerHTML = '';
-        teamCap.splice(selectedPokemon, 1);
-        console.log(teamCap)
-        displayTeam(teamCap);
-    } else if (selectedPokemon === undefined && teamCap.length === 1) {
-        teamLi[0].innerHTML = '';
-        teamCap.splice(selectedPokemon, 1);
-        console.log(teamCap)
-        displayTeam(teamCap);
-    } 
-    else {
-        selectedPokemon = 0;
-        console.log(selectedPokemon)
-        teamCap.splice(selectedPokemon, 1);
-        console.log(teamCap)
-        displayTeam(teamCap);
-    }
-
-    // teamCap.splice(selectedPokemon, 1);
-    // console.log(teamCap)
-    // displayTeam(teamCap);
-    
+            if (selectedPokemon === teamCap.indexOf(teamCap[selectedPokemon])) {
+                teamLi[selectedPokemon].innerHTML = '';
+                teamCap.splice(selectedPokemon, 1);
+                displayTeam(teamCap);
+            } else if (selectedPokemon === undefined && teamCap.length === 1) {
+                teamLi[0].innerHTML = '';
+                teamCap.splice(selectedPokemon, 1);
+                displayTeam(teamCap);
+            } 
+            else {
+                selectedPokemon = 0;
+                teamCap.splice(selectedPokemon, 1);
+                displayTeam(teamCap);
+            }
+        }
+    }, 400)
 }) 
 
+// Double click ability to clear all Pokemon from Teams Section
+deleteBtn.addEventListener('dblclick', () => {
+    singleClick = false;
+    teamCap.splice(0, teamCap.length);
+    for (let i = 0; i < 6; i++) {
+        teamLi[i].innerHTML = '';
+    }
+    setTimeout(() => {
+        singleClick = true;
+    }, 500)
+}) 
 
-
+// Search for pokemon in Main Screen
 
 search.addEventListener('keyup', (e) => {
     e.preventDefault()
@@ -230,11 +237,13 @@ search.addEventListener('keyup', (e) => {
     allPokemon.forEach(pokemon => {
         let splitName = pokemon.name.split('', iterator);
         if (splitName.join('') == searchArray.join('')) {
-            renderPokedex(pokemon)
+            renderPokedex(pokemon);
         }
         
     })
 })
+
+//Fetch all Pokemon from API and render them in order into main screen
 
 fetch(pokemonUrl)
 .then(resp => resp.json())
